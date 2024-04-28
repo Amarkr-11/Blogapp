@@ -1,5 +1,6 @@
 package com.blogapplication.controllers;
 
+import com.blogapplication.paylods.ApiResponse;
 import com.blogapplication.paylods.UserDto;
 import com.blogapplication.services.UserService;
 import jakarta.validation.Valid;
@@ -43,9 +44,9 @@ public class UserController {
 
     //Delete the user
     @DeleteMapping("delete/{userId}")
-    public ResponseEntity<?> DeleteUser(@PathVariable("userId") Integer userId){
+    public ResponseEntity<ApiResponse> DeleteUser(@PathVariable("userId") Integer userId){
         this.userService.deleteUser(userId);
-        return new ResponseEntity(Map.of("message", "User Deleted Successfully"),HttpStatus.OK);
+        return new ResponseEntity<ApiResponse>(new ApiResponse("User Deleted Successfully !!",true),HttpStatus.OK);
     }
 
     //List of users

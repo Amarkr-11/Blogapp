@@ -1,5 +1,6 @@
 package com.blogapplication.controllers;
 
+import com.blogapplication.paylods.ApiResponse;
 import com.blogapplication.paylods.CategoryDto;
 import com.blogapplication.services.CategoryService;
 import jakarta.validation.Valid;
@@ -45,10 +46,10 @@ public class CategoryController {
 
     //delete
     @DeleteMapping("/delete/{catId}")
-    public ResponseEntity<?> deleteCategory( @PathVariable Integer catId){
+    public ResponseEntity<ApiResponse> deleteCategory( @PathVariable Integer catId){
 
         this.categoryService.deleteCategory(catId);
-        return new ResponseEntity(Map.of("message", "Category Deleted Successfully"),HttpStatus.OK);
+        return new ResponseEntity<ApiResponse>(new ApiResponse("Category Deleted Successfully !!",true),HttpStatus.OK);
     }
 
     //get one

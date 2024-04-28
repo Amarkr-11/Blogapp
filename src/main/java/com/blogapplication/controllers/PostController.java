@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import com.blogapplication.paylods.ApiResponse;
 import com.blogapplication.paylods.PostDto;
 import com.blogapplication.paylods.PostResponse;
 import com.blogapplication.services.ImageService;
@@ -122,10 +123,10 @@ public class PostController {
 
     //delete a post
     @DeleteMapping("/post/delete/{postId}")
-    public ResponseEntity<?> deletePost( @PathVariable Integer postId){
+    public ResponseEntity<ApiResponse> deletePost( @PathVariable Integer postId){
 
         this.postService.deletePost(postId);
-        return new ResponseEntity(Map.of("message", "Post Deleted Successfully"),HttpStatus.OK);
+        return new ResponseEntity<ApiResponse>(new ApiResponse("Post Deleted Successfully !!",true),HttpStatus.OK);
     }
 
     //update a post

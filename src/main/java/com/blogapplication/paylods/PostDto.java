@@ -1,7 +1,10 @@
 package com.blogapplication.paylods;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import com.blogapplication.entity.Comment;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -31,5 +34,9 @@ public class PostDto {
     private CategoryDto category;
 
     private UserDto user;
+
+    //using this when we fetch post comment will automatically come for that post.
+    private Set<CommentDto> comments=new HashSet<>();
+
 
 }

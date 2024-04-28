@@ -3,6 +3,7 @@ package com.blogapplication.exceptions;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.blogapplication.paylods.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -15,10 +16,11 @@ public class GlobalExceptionHandler {
     //Exception handling when it occur
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<?> resourceNotFoundExceptionHandler(ResourceNotFoundException ex)
+    public ResponseEntity<ApiResponse> resourceNotFoundExceptionHandler(ResourceNotFoundException ex)
     {
         String message=ex.getMessage()	;
-        return  new ResponseEntity(Map.of("message",message),HttpStatus.NOT_FOUND);
+        ApiResponse apiResponse= new ApiResponse(message,false);
+        return  new ResponseEntity<ApiResponse>(apiResponse,HttpStatus.NOT_FOUND);
     }
 
     //exception handling for bad request after validation of DTO
