@@ -10,13 +10,17 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+/*
+	this class is for basic authentication from Database in Security hence added UserDetails interface and done few
+	mapping with role entity.
+ */
 
 @Entity
 @Table(name="users")
 @NoArgsConstructor
 @Getter
 @Setter
-public class User implements UserDetails {
+public class User implements UserDetails {//implementaing user details for spring security
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
